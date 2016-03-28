@@ -18,7 +18,8 @@ var h = 0;
 var timer;
 var updateStarted = false;
 var touches = [];
-
+var start;
+var end;
 
 function update() {
 	if (updateStarted) return;
@@ -36,6 +37,7 @@ function update() {
 		canvas.height = h;
 	}
 
+start = new Date().getTime();
 	ctx.clearRect(0, 0, w, h);
 
 	var i, len = touches.length;
@@ -55,6 +57,8 @@ function update() {
 		ctx.stroke();
     console.log('drawn circle at ' + px +',' + py);
 	}
+	end = new Date().getTime();
+	document.getElementById('perf').innerHTML = end - start;
 
 	updateStarted = false;
 }
@@ -84,6 +88,7 @@ canvas.addEventListener('touchstart', function(event) {
 	
 <canvas id="canvas" width="300" height="300" style="top:0px; left:0px; width: 300px; height: 300px;"></canvas>
 <object id="tuio" type="application/x-tuio">Plugin FAILED to load</object>
+<div>FPS : <span id="perf">0</span></div>
 
 </body>
 </html>
