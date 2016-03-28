@@ -59,7 +59,7 @@ start = new Date().getTime();
 	}
 	end = new Date().getTime();
 	
-	if (len > 1)
+	if ((end - start) > 0)
 		document.getElementById('perf').innerHTML = end - start;
 
 	updateStarted = false;
