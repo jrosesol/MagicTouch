@@ -58,7 +58,9 @@ start = new Date().getTime();
     console.log('drawn circle at ' + px +',' + py);
 	}
 	end = new Date().getTime();
-	document.getElementById('perf').innerHTML = end - start;
+	
+	if (len > 1)
+		document.getElementById('perf').innerHTML = end - start;
 
 	updateStarted = false;
 }
@@ -88,7 +90,7 @@ canvas.addEventListener('touchstart', function(event) {
 	
 <canvas id="canvas" width="300" height="300" style="top:0px; left:0px; width: 300px; height: 300px;"></canvas>
 <object id="tuio" type="application/x-tuio">Plugin FAILED to load</object>
-<div>FPS : <span id="perf">0</span></div>
+<div style="position: absolute; top: 0px;">FPS : <span id="perf">0</span></div>
 
 </body>
 </html>
