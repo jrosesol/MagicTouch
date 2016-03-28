@@ -20,6 +20,7 @@ var updateStarted = false;
 var touches = [];
 var start;
 var end;
+var maxTime = 0;
 
 function update() {
 	if (updateStarted) return;
@@ -38,7 +39,7 @@ function update() {
 	}
 
 start = new Date().getTime();
-	ctx.clearRect(0, 0, w, h);
+	//ctx.clearRect(0, 0, w, h);
 
 	var i, len = touches.length;
 	for (i=0; i<len; i++) {
@@ -59,8 +60,10 @@ start = new Date().getTime();
 	}
 	end = new Date().getTime();
 	
-	if ((end - start) > 0)
+	if ((end - start) > maxTime) {
+		maxTime = end - start;
 		document.getElementById('perf').innerHTML = end - start;
+	}
 
 	updateStarted = false;
 }
